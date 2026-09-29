@@ -108,7 +108,7 @@ LANGUAGE_TO_KEY = {
 KEY_TO_LANGUAGE = dict((v, k) for k, v in LANGUAGE_TO_KEY.items())
 
 LANGUAGE_TO_FONT = {
-    'japanese': "NotoSansJP.ttf",
+    'japanese': "NotoSansJP-Regular.ttf",
     'korean': "NotoSansKR.ttf",
     'chinese': "NotoSansSC.ttf"
 }
@@ -163,7 +163,7 @@ class ct2_device_config(object):
     compute_type: Optional[str] = None
     cpu_threads: int = 4
     num_workers: int = 1
-    flash_attention: bool = False
+    flash_attention: bool = True
 
 
 @dataclass_json
