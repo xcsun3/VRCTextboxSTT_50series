@@ -56,12 +56,9 @@ def get_absolute_path(relative_path, script_path=__file__) -> str:
     return os.path.join(base_path, relative_path)
 
 
-def get_best_compute_type(device, device_index=0, supports_flash_att=False) -> str:
+def get_best_compute_type(device, device_index=0) -> str:
     supported_types = set(get_supported_compute_types(device, device_index))
-    preferred_types = ["int8_bfloat16", "int8_float16", "int8", "bfloat16", "float16", "int8_float32", "float32"]
-
-    if supports_flash_att:
-        preferred_types = ["int8_bfloat16", "int8_float16", "bfloat16", "float16"]
+    preferred_types = ["float16", "int8", "float32"]
 
     for compute_type in preferred_types:
         if compute_type in supported_types:
