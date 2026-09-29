@@ -817,7 +817,7 @@ class SettingsWindow:
             self.entry_model.delete(0, tk.END)
             self.entry_model.insert(0, self.value_model.get())
         
-        if "distil" in self.value_model.get() or "large" in self.value_model.get():
+        if "distil" in self.value_model.get():
             self.value_language.set("english")
             self.opt_language.configure(state="disabled")
         else:
