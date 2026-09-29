@@ -70,10 +70,10 @@ def main():
         config.text_timeout = config.listener.timeout_time * 2
 
     listen = ListenHandler(config.listener)
-    transcriber = TranscribeHandler(config.whisper, config.vad, CACHE_PATH, config.translator.language == "english")
+    transcriber = TranscribeHandler(config.whisper, config.vad, CACHE_PATH, False)
     transcriber.transcribe()
     translator: TranslationHandler = None
-    if config.translator.language and config.translator.language != config.whisper.language and transcriber.task == "transcribe":
+    if config.translator.language and config.translator.language != config.whisper.language:
         translator = TranslationHandler(CACHE_PATH, config.whisper.language, config.translator)
     font_language = config.whisper.language if not config.translator.language else config.translator.language
     ovr = OVRHandler(config.overlay, __file__, font_language, DEBUG)
